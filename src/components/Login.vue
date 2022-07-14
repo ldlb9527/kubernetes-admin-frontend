@@ -53,7 +53,8 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          console.log(this.ValidateForm.username)
+          alert("账号:"+this.ValidateForm.username+"  密码:"+this.ValidateForm.password);
         } else {
           console.log('error submit!!');
           return false;
