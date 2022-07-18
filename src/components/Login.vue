@@ -13,19 +13,19 @@
       <el-card shadow="always">
         <h1>Kubernetes Admin</h1>
         <el-divider></el-divider>
-        <el-form :model="ValidateForm" ref="ValidateForm" label-width="100px" class="demo-ruleForm">
+        <el-form :model="loginForm" ref="loginForm" label-width="100px" class="demo-ruleForm">
 
           <el-form-item label="账号" prop="username" :rules="[{ required: true, message: '账号不能为空'}]">
-            <el-input placeholder="请输入账号" type="text" v-model="ValidateForm.username" autocomplete="off"></el-input>
+            <el-input placeholder="请输入账号" type="text" v-model="loginForm.username" autocomplete="off"></el-input>
           </el-form-item>
 
           <el-form-item label="密码" prop="password" :rules="[{ required: true, message: '密码不能为空'}]">
-            <el-input placeholder="请输入密码" type="password" v-model="ValidateForm.password" autocomplete="off" show-password></el-input>
+            <el-input placeholder="请输入密码" type="password" v-model="loginForm.password" autocomplete="off" show-password></el-input>
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ValidateForm')">提交</el-button>
-            <el-button @click="resetForm('ValidateForm')">重置</el-button>
+            <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
+            <el-button @click="resetForm('loginForm')">重置</el-button>
           </el-form-item>
 
         </el-form>
@@ -43,7 +43,7 @@ export default {
   name:"Login",
   data() {
     return {
-      ValidateForm: {
+      loginForm: {
         username: '',
         password: ''
       }
@@ -51,10 +51,13 @@ export default {
   },
   methods: {
     submitForm(formName) {
+
       this.$refs[formName].validate((valid) => {
+        console.log(valid)
         if (valid) {
-          console.log(this.ValidateForm.username)
-          alert("账号:"+this.ValidateForm.username+"  密码:"+this.ValidateForm.password);
+          console.log(this.loginForm.username)
+          this.$router.push("/clusters")
+          //alert("账号:"+this.loginForm.username+"  密码:"+this.loginForm.password);
         } else {
           console.log('error submit!!');
           return false;
