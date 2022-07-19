@@ -56,7 +56,7 @@ export default {
         console.log(valid)
         if (valid) {
           console.log(this.loginForm.username)
-          this.$router.push("/clusters")
+          this.$router.push("/home")
           //alert("账号:"+this.loginForm.username+"  密码:"+this.loginForm.password);
         } else {
           console.log('error submit!!');
