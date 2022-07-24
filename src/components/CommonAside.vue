@@ -43,16 +43,16 @@ export default {
     return {
       menu: [
         {
-          path: '/',
-          name: 'home',
-          label: '首页',
+          path: '/cluster/list',
+          name: 'clusterList',
+          label: '集群列表',
           icon: 's-home',
           url: 'Home/Home'
         },
         {
-          path: '/mall',
-          name: 'mall',
-          label: '商品管理',
+          path: '/clusterinfo',
+          name: 'clusterinfo',
+          label: '集群概览',
           icon: 'video-play',
           url: 'MallManage/MallManage'
         },

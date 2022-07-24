@@ -9,16 +9,22 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: 'login'
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/',
+      path: '/main',
       name: 'Main',
       component: Main,
       children: [
-        {path:'/home',name:'home',component: () => import('../components/home/Index')},
+        {path:'/cluster/list',name:'clusterList',component: () => import('../components/cluster/List')},
+        {path:'/cluster/add',name:'addCluster',component: () => import('../components/cluster/Add')},
+        {path:'/clusterinfo',name:'clusterinfo',component: () => import('../components/clusterinfo/Index1')},
         {path:'/user',name:'user',component: () => import('../components/user/Index')}
       ]
     },
