@@ -59,25 +59,25 @@ export default {
         {
           path: '/user',
           name: 'user',
-          label: '用户管理',
+          label: '服务',
           icon: 'user',
           url: 'UserManage/UserManage'
         },
         {
-          label: '其他',
+          label: '应用程序',
           icon: 'location',
           children: [
             {
               path: '/page1',
               name: 'page1',
-              label: '页面1',
+              label: 'pod',
               icon: 'setting',
               url: 'Other/PageOne'
             },
             {
               path: '/page2',
               name: 'page2',
-              label: '页面2',
+              label: 'deployment',
               icon: 'setting',
               url: 'Other/PageTwo'
             }
