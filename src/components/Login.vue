@@ -10,7 +10,7 @@
     </el-row>
 
 
-
+    <el-col :span="8" :offset="8">
       <el-card shadow="always">
         <h1 style="text-align: center">Kubernetes Admin</h1>
         <el-divider></el-divider>

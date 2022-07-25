@@ -15,7 +15,7 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+              @click="handleEdit(scope.$index, scope.row)">详情</el-button>
             <el-button
               size="mini"
               type="danger"
@@ -34,6 +34,7 @@
 <script>
 import axios from '../../util/axios'
 export default {
+  inject: ['reload'],
   data() {
     return {
       tableData: [],
@@ -49,9 +50,27 @@ export default {
   methods: {
     handleEdit(index, row) {
       console.log(index, row);
+      this.$alert('该功能开发中', '提示', {
+        confirmButtonText: '确定'
+      });
     },
     handleDelete(index, row) {
-      console.log(index, row);
+      this.$confirm('确认删除名称为 '+row.name+' 的集群吗？','提示',{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        console.log('删除')
+        axios.request({
+          url: 'cluster/delete/' + row.name
+        }).then(resp => {
+          console.log(resp)
+          this.reload()
+        })
+      }).catch(() => {
+        console.log('取消删除')
+      })
+
     },
     addCluster() {
       this.$router.push('/cluster/add')
