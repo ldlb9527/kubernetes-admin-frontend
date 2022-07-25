@@ -5,8 +5,11 @@
 const path = require('path')
 
 module.exports = {
+  baseUrl: {
+    dev: 'http://localhost:10010',
+    prod: 'http://localhost:10010'
+  },
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -20,7 +23,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
