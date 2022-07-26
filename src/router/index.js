@@ -24,6 +24,7 @@ export default new Router({
       children: [
         {path:'/cluster/list',name:'clusterList',component: () => import('../components/cluster/List')},
         {path:'/cluster/add',name:'addCluster',component: () => import('../components/cluster/Add')},
+        {path:'/cluster/info',name:'ClusterInfo',component: () => import('../components/cluster/Info')},
         {path:'/clusterinfo',name:'clusterinfo',component: () => import('../components/clusterinfo/Index1')},
         {path:'/user',name:'user',component: () => import('../components/user/Index')}
       ]

@@ -12,7 +12,8 @@
 
     <el-col :span="8" :offset="8">
       <el-card shadow="always">
-        <h1 style="text-align: center">Kubernetes Admin</h1>
+        <div id="myChart"></div>
+<!--        <h1 style="text-align: center">Kubernetes Admin</h1>-->
         <el-divider></el-divider>
         <el-form :model="loginForm" ref="loginForm" label-width="100px" class="demo-ruleForm">
 
@@ -50,6 +51,9 @@ export default {
       }
     };
   },
+  mounted() {
+    this.drawLine();
+  },
   methods: {
     submitForm(formName) {
 
@@ -67,6 +71,71 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    drawLine() {
+      // 基于准备好的dom，初始化echarts实例
+      let myChart = this.$echarts.init(document.getElementById('myChart'),'vintage',{
+        width: 400,
+        height: 100
+      })
+
+
+      // 绘制图表配置
+      let option = {
+        graphic: {
+          elements: [
+            {
+              type: 'text',
+              left: 'center',
+              top: 'center',
+              style: {
+                text: 'Kubernetes Admin',
+                fontSize: 40,
+                fontWeight: 'bold',
+                lineDash: [0, 200],
+                lineDashOffset: 0,
+                fill: 'transparent',
+                stroke: '#000',
+                lineWidth: 1
+              },
+              keyframeAnimation: {
+                duration: 5000,
+                loop: false,
+                keyframes: [
+                  {
+                    percent: 0.7,
+                    style: {
+                      fill: 'transparent',
+                      lineDashOffset: 200,
+                      lineDash: [200, 0]
+                    }
+                  },
+                  {
+                    // Stop for a while.
+                    percent: 0.8,
+                    style: {
+                      fill: 'transparent'
+                    }
+                  },
+                  {
+                    percent: 1,
+                    style: {
+                      fill: 'black'
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      };
+      // 窗口大小自适应方案
+      myChart.setOption(option);
+      setTimeout(function() {
+        window.onresize = function() {
+          myChart.resize();
+        }
+      }, 200)
     }
   }
 }

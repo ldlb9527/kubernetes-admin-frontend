@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import store from './store'
 import http from 'axios'
+//这一行：
+import * as echarts from 'echarts'
+//和这一行：
+Vue.prototype.$echarts = echarts
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

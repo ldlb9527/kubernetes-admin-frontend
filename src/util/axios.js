@@ -32,9 +32,11 @@ class HttpRequest {
   }
 
   request(options) {
+    console.log(options)
     const instance = axios.create()
     options = {...this.getInsideConfig(),...options}
     this.interceptors(instance)
+    console.log(options)
     return instance(options)
   }
 
